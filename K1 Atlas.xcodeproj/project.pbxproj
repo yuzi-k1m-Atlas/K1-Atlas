@@ -1,0 +1,546 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		B56D1DC52FF86A9800CD0AF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B56D1DAB2FF86A9700CD0AF4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B56D1DB22FF86A9700CD0AF4;
+			remoteInfo = "K1 Atlas";
+		};
+		B56D1DCF2FF86A9800CD0AF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B56D1DAB2FF86A9700CD0AF4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B56D1DB22FF86A9700CD0AF4;
+			remoteInfo = "K1 Atlas";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B56D1DB32FF86A9700CD0AF4 /* K1 Atlas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "K1 Atlas.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B56D1DC42FF86A9800CD0AF4 /* K1 AtlasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "K1 AtlasTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B56D1DCE2FF86A9800CD0AF4 /* K1 AtlasUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "K1 AtlasUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		B56D1DB52FF86A9700CD0AF4 /* K1 Atlas */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "K1 Atlas";
+			sourceTree = "<group>";
+		};
+		B56D1DC72FF86A9800CD0AF4 /* K1 AtlasTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "K1 AtlasTests";
+			sourceTree = "<group>";
+		};
+		B56D1DD12FF86A9800CD0AF4 /* K1 AtlasUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "K1 AtlasUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B56D1DB02FF86A9700CD0AF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B56D1DC12FF86A9800CD0AF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B56D1DCB2FF86A9800CD0AF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B56D1DAA2FF86A9700CD0AF4 = {
+			isa = PBXGroup;
+			children = (
+				B56D1DB52FF86A9700CD0AF4 /* K1 Atlas */,
+				B56D1DC72FF86A9800CD0AF4 /* K1 AtlasTests */,
+				B56D1DD12FF86A9800CD0AF4 /* K1 AtlasUITests */,
+				B56D1DB42FF86A9700CD0AF4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B56D1DB42FF86A9700CD0AF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B56D1DB32FF86A9700CD0AF4 /* K1 Atlas.app */,
+				B56D1DC42FF86A9800CD0AF4 /* K1 AtlasTests.xctest */,
+				B56D1DCE2FF86A9800CD0AF4 /* K1 AtlasUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B56D1DB22FF86A9700CD0AF4 /* K1 Atlas */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B56D1DD82FF86A9800CD0AF4 /* Build configuration list for PBXNativeTarget "K1 Atlas" */;
+			buildPhases = (
+				B56D1DAF2FF86A9700CD0AF4 /* Sources */,
+				B56D1DB02FF86A9700CD0AF4 /* Frameworks */,
+				B56D1DB12FF86A9700CD0AF4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				B56D1DB52FF86A9700CD0AF4 /* K1 Atlas */,
+			);
+			name = "K1 Atlas";
+			packageProductDependencies = (
+			);
+			productName = "K1 Atlas";
+			productReference = B56D1DB32FF86A9700CD0AF4 /* K1 Atlas.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B56D1DC32FF86A9800CD0AF4 /* K1 AtlasTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B56D1DDB2FF86A9800CD0AF4 /* Build configuration list for PBXNativeTarget "K1 AtlasTests" */;
+			buildPhases = (
+				B56D1DC02FF86A9800CD0AF4 /* Sources */,
+				B56D1DC12FF86A9800CD0AF4 /* Frameworks */,
+				B56D1DC22FF86A9800CD0AF4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B56D1DC62FF86A9800CD0AF4 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B56D1DC72FF86A9800CD0AF4 /* K1 AtlasTests */,
+			);
+			name = "K1 AtlasTests";
+			packageProductDependencies = (
+			);
+			productName = "K1 AtlasTests";
+			productReference = B56D1DC42FF86A9800CD0AF4 /* K1 AtlasTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B56D1DCD2FF86A9800CD0AF4 /* K1 AtlasUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B56D1DDE2FF86A9800CD0AF4 /* Build configuration list for PBXNativeTarget "K1 AtlasUITests" */;
+			buildPhases = (
+				B56D1DCA2FF86A9800CD0AF4 /* Sources */,
+				B56D1DCB2FF86A9800CD0AF4 /* Frameworks */,
+				B56D1DCC2FF86A9800CD0AF4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B56D1DD02FF86A9800CD0AF4 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B56D1DD12FF86A9800CD0AF4 /* K1 AtlasUITests */,
+			);
+			name = "K1 AtlasUITests";
+			packageProductDependencies = (
+			);
+			productName = "K1 AtlasUITests";
+			productReference = B56D1DCE2FF86A9800CD0AF4 /* K1 AtlasUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B56D1DAB2FF86A9700CD0AF4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					B56D1DB22FF86A9700CD0AF4 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					B56D1DC32FF86A9800CD0AF4 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = B56D1DB22FF86A9700CD0AF4;
+					};
+					B56D1DCD2FF86A9800CD0AF4 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = B56D1DB22FF86A9700CD0AF4;
+					};
+				};
+			};
+			buildConfigurationList = B56D1DAE2FF86A9700CD0AF4 /* Build configuration list for PBXProject "K1 Atlas" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B56D1DAA2FF86A9700CD0AF4;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = B56D1DB42FF86A9700CD0AF4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B56D1DB22FF86A9700CD0AF4 /* K1 Atlas */,
+				B56D1DC32FF86A9800CD0AF4 /* K1 AtlasTests */,
+				B56D1DCD2FF86A9800CD0AF4 /* K1 AtlasUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B56D1DB12FF86A9700CD0AF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B56D1DC22FF86A9800CD0AF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B56D1DCC2FF86A9800CD0AF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B56D1DAF2FF86A9700CD0AF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B56D1DC02FF86A9800CD0AF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B56D1DCA2FF86A9800CD0AF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B56D1DC62FF86A9800CD0AF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B56D1DB22FF86A9700CD0AF4 /* K1 Atlas */;
+			targetProxy = B56D1DC52FF86A9800CD0AF4 /* PBXContainerItemProxy */;
+		};
+		B56D1DD02FF86A9800CD0AF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B56D1DB22FF86A9700CD0AF4 /* K1 Atlas */;
+			targetProxy = B56D1DCF2FF86A9800CD0AF4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B56D1DD62FF86A9800CD0AF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.8;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B56D1DD72FF86A9800CD0AF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.8;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		B56D1DD92FF86A9800CD0AF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "K1 Atlas/K1_Atlas.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"K1 Atlas/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yuziasanaka.K1-Atlas";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B56D1DDA2FF86A9800CD0AF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "K1 Atlas/K1_Atlas.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"K1 Atlas/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yuziasanaka.K1-Atlas";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		B56D1DDC2FF86A9800CD0AF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.8;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yuziasanaka.K1-AtlasTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/K1 Atlas.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/K1 Atlas";
+			};
+			name = Debug;
+		};
+		B56D1DDD2FF86A9800CD0AF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.8;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yuziasanaka.K1-AtlasTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/K1 Atlas.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/K1 Atlas";
+			};
+			name = Release;
+		};
+		B56D1DDF2FF86A9800CD0AF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yuziasanaka.K1-AtlasUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "K1 Atlas";
+			};
+			name = Debug;
+		};
+		B56D1DE02FF86A9800CD0AF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yuziasanaka.K1-AtlasUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "K1 Atlas";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B56D1DAE2FF86A9700CD0AF4 /* Build configuration list for PBXProject "K1 Atlas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B56D1DD62FF86A9800CD0AF4 /* Debug */,
+				B56D1DD72FF86A9800CD0AF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B56D1DD82FF86A9800CD0AF4 /* Build configuration list for PBXNativeTarget "K1 Atlas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B56D1DD92FF86A9800CD0AF4 /* Debug */,
+				B56D1DDA2FF86A9800CD0AF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B56D1DDB2FF86A9800CD0AF4 /* Build configuration list for PBXNativeTarget "K1 AtlasTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B56D1DDC2FF86A9800CD0AF4 /* Debug */,
+				B56D1DDD2FF86A9800CD0AF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B56D1DDE2FF86A9800CD0AF4 /* Build configuration list for PBXNativeTarget "K1 AtlasUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B56D1DDF2FF86A9800CD0AF4 /* Debug */,
+				B56D1DE02FF86A9800CD0AF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B56D1DAB2FF86A9700CD0AF4 /* Project object */;
+}
