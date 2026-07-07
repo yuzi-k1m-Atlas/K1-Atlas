@@ -1,98 +1,17 @@
 import SwiftUI
 import AppKit
 
-struct K1Voice: Identifiable, Hashable {
-    let id = UUID()
-    let sourceFile: String
-    let number: Int
-    let name: String
-    let rawData: [UInt8]
-
-    var displayNumber: String {
-        String(format: "%02d", number)
-    }
-
-    var fingerprint: String {
-        rawData.map { String(format: "%02X", $0) }.joined()
-    }
-}
-
 struct ContentView: View {
-    @State private var selectedSource = "No library loaded"
-    @State private var fileInfo = ""
-    @State private var voices: [K1Voice] = []
-    @State private var searchText = ""
-    @State private var duplicateMode = false
-    @State private var smartCleanMode = false
 
-    var duplicateGroups: [String: [K1Voice]] {
-        Dictionary(grouping: voices, by: { $0.fingerprint })
-            .filter { $0.value.count > 1 }
-    }
+    @StateObject private var atlas = AtlasViewModel()
 
-    var duplicateFingerprints: Set<String> {
-        Set(duplicateGroups.keys)
-    }
-
-    var removedDuplicateIDs: Set<UUID> {
-        var removed = Set<UUID>()
-
-        for group in duplicateGroups.values {
-            let sorted = group.sorted {
-                if $0.sourceFile == $1.sourceFile {
-                    return $0.number < $1.number
-                }
-                return $0.sourceFile < $1.sourceFile
-            }
-
-            for voice in sorted.dropFirst() {
-                removed.insert(voice.id)
-            }
-        }
-
-        return removed
-    }
-
-    var cleanedVoices: [K1Voice] {
-        voices.filter { !removedDuplicateIDs.contains($0.id) }
-    }
-
-    var visibleVoices: [K1Voice] {
-        var result: [K1Voice]
-
-        if duplicateMode && smartCleanMode {
-            // Smart Cleanで「消える側」だけ表示
-            result = voices.filter { removedDuplicateIDs.contains($0.id) }
-        } else if duplicateMode {
-            // 重複グループ全部を表示
-            result = voices.filter { duplicateFingerprints.contains($0.fingerprint) }
-        } else if smartCleanMode {
-            // 重複除去後のライブラリ
-            result = cleanedVoices
-        } else {
-            result = voices
-        }
-
-        if !searchText.isEmpty {
-            result = result.filter {
-                $0.name.localizedCaseInsensitiveContains(searchText) ||
-                $0.sourceFile.localizedCaseInsensitiveContains(searchText)
-            }
-        }
-
-        return result
-    }
-
-    var uniqueCount: Int {
-        Set(voices.map { $0.fingerprint }).count
-    }
-
-    var duplicateCount: Int {
-        max(0, voices.count - uniqueCount)
-    }
+    @State private var selectedVoiceIDs = Set<UUID>()
+    @State private var undoStack: [[K1Voice]] = []
+    @State private var bankHeader: [UInt8] = [0xF0, 0x40, 0x00, 0x20, 0x00, 0x03, 0x00, 0x00]
+    @State private var message = ""
 
     var body: some View {
-        VStack(spacing: 18) {
+        VStack(spacing: 14) {
             Text("K1 Atlas")
                 .font(.largeTitle)
                 .bold()
@@ -100,7 +19,7 @@ struct ContentView: View {
             Text("Modern Patch Librarian")
                 .foregroundStyle(.secondary)
 
-            HStack(spacing: 12) {
+            HStack(spacing: 10) {
                 Button("Open File") {
                     openFile()
                 }
@@ -108,34 +27,57 @@ struct ContentView: View {
                 Button("Open Folder") {
                     openFolder()
                 }
+
+                Button("Delete Selected") {
+                    deleteSelected()
+                }
+                .disabled(selectedVoiceIDs.isEmpty)
+
+                Button("Undo") {
+                    undoDelete()
+                }
+                .disabled(undoStack.isEmpty)
+
+                Button("Export Bank") {
+                    exportBank()
+                }
+                .disabled(atlas.visibleVoices.count < 32)
             }
 
             Divider()
 
-            Text(selectedSource)
+            Text(atlas.selectedSource)
                 .font(.headline)
 
-            Text(fileInfo)
+            Text(atlas.fileInfo)
                 .foregroundStyle(.secondary)
 
             HStack {
-                Button(duplicateMode ? "Show All" : "Show Duplicates") {
-                    duplicateMode.toggle()
+                Button(atlas.duplicateMode ? "Show All" : "Show Duplicates") {
+                    atlas.duplicateMode.toggle()
+                    selectedVoiceIDs.removeAll()
                 }
 
-                Button(smartCleanMode ? "Smart Clean: ON" : "Smart Clean") {
-                    smartCleanMode.toggle()
+                Button(atlas.smartCleanMode ? "Smart Clean: ON" : "Smart Clean") {
+                    atlas.smartCleanMode.toggle()
+                    selectedVoiceIDs.removeAll()
                 }
 
                 Text(statusText)
                     .foregroundStyle(.secondary)
             }
 
-            TextField("Search voices or source files", text: $searchText)
+            TextField("Search voices or source files", text: $atlas.searchText)
                 .textFieldStyle(.roundedBorder)
-                .frame(maxWidth: 420)
+                .frame(maxWidth: 460)
 
-            List(visibleVoices) { voice in
+            if !message.isEmpty {
+                Text(message)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+
+            List(atlas.visibleVoices, selection: $selectedVoiceIDs) { voice in
                 HStack {
                     Text(voice.displayNumber)
                         .monospacedDigit()
@@ -150,34 +92,34 @@ struct ContentView: View {
 
                     Spacer()
 
-                    if removedDuplicateIDs.contains(voice.id) {
+                    if atlas.removedDuplicateIDs.contains(voice.id) {
                         Text("Removed")
                             .font(.caption)
                             .foregroundStyle(.red)
-                    } else if duplicateFingerprints.contains(voice.fingerprint) {
+                    } else if atlas.duplicateFingerprints.contains(voice.fingerprint) {
                         Text("Kept")
                             .font(.caption)
                             .foregroundStyle(.orange)
                     }
                 }
             }
-            .frame(minHeight: 360)
+            .frame(minHeight: 380)
 
             Spacer()
         }
-        .padding(32)
-        .frame(minWidth: 900, minHeight: 700)
+        .padding(30)
+        .frame(minWidth: 980, minHeight: 760)
     }
 
     var statusText: String {
-        if duplicateMode && smartCleanMode {
-            return "\(visibleVoices.count) removed duplicates shown"
-        } else if duplicateMode {
-            return "\(visibleVoices.count) duplicate-related voices shown"
-        } else if smartCleanMode {
-            return "\(visibleVoices.count) cleaned voices / \(duplicateCount) removed"
+        if atlas.duplicateMode && atlas.smartCleanMode {
+            return "\(atlas.visibleVoices.count) removed duplicates shown"
+        } else if atlas.duplicateMode {
+            return "\(atlas.visibleVoices.count) duplicate-related voices shown"
+        } else if atlas.smartCleanMode {
+            return "\(atlas.visibleVoices.count) cleaned voices / \(atlas.duplicateCount) removed"
         } else {
-            return "\(visibleVoices.count) shown"
+            return "\(atlas.visibleVoices.count) shown"
         }
     }
 
@@ -210,19 +152,22 @@ struct ContentView: View {
                 loadFiles(files, sourceName: folderURL.lastPathComponent)
 
             } catch {
-                selectedSource = folderURL.lastPathComponent
-                fileInfo = "Error: \(error.localizedDescription)"
-                voices.removeAll()
+                atlas.selectedSource = folderURL.lastPathComponent
+                atlas.fileInfo = "Error: \(error.localizedDescription)"
+                atlas.voices.removeAll()
             }
         }
     }
 
     func loadFiles(_ urls: [URL], sourceName: String) {
-        selectedSource = sourceName
-        voices.removeAll()
-        searchText = ""
-        duplicateMode = false
-        smartCleanMode = false
+        atlas.selectedSource = sourceName
+        atlas.voices.removeAll()
+        atlas.searchText = ""
+        atlas.duplicateMode = false
+        atlas.smartCleanMode = false
+        selectedVoiceIDs.removeAll()
+        undoStack.removeAll()
+        message = ""
 
         var loadedVoices: [K1Voice] = []
         var bankCount = 0
@@ -249,6 +194,7 @@ struct ContentView: View {
 
                 } else if bytes.count == 2825 {
                     bankCount += 1
+                    bankHeader = Array(bytes[0..<8])
 
                     for index in 0..<32 {
                         let start = 8 + (index * 88)
@@ -278,9 +224,68 @@ struct ContentView: View {
             }
         }
 
-        voices = loadedVoices
+        atlas.voices = loadedVoices
+        atlas.fileInfo = "\(bankCount) banks / \(singleCount) singles / \(unknownCount) unknown / \(atlas.voices.count) voices / \(atlas.uniqueCount) unique / \(atlas.duplicateCount) duplicates"
+    }
 
-        fileInfo = "\(bankCount) banks / \(singleCount) singles / \(unknownCount) unknown / \(voices.count) voices / \(uniqueCount) unique / \(duplicateCount) duplicates"
+    func deleteSelected() {
+        let selected = atlas.voices.filter { selectedVoiceIDs.contains($0.id) }
+
+        guard !selected.isEmpty else { return }
+
+        undoStack.append(selected)
+        atlas.voices.removeAll { selectedVoiceIDs.contains($0.id) }
+        selectedVoiceIDs.removeAll()
+
+        message = "Deleted \(selected.count) voice(s)."
+    }
+
+    func undoDelete() {
+        guard let lastDeleted = undoStack.popLast() else { return }
+
+        atlas.voices.append(contentsOf: lastDeleted)
+        atlas.voices.sort {
+            if $0.sourceFile == $1.sourceFile {
+                return $0.number < $1.number
+            }
+            return $0.sourceFile < $1.sourceFile
+        }
+
+        message = "Undo restored \(lastDeleted.count) voice(s)."
+    }
+
+    func exportBank() {
+        let exportVoices = Array(atlas.visibleVoices.prefix(32))
+
+        guard exportVoices.count == 32 else {
+            message = "Export Bank needs 32 voices."
+            return
+        }
+
+        var exportBytes: [UInt8] = bankHeader
+
+        for voice in exportVoices {
+            exportBytes.append(contentsOf: voice.rawData)
+        }
+
+        exportBytes.append(0xF7)
+
+        saveSysEx(exportBytes, suggestedName: "K1_Atlas_Bank.syx")
+    }
+
+    func saveSysEx(_ bytes: [UInt8], suggestedName: String) {
+        let panel = NSSavePanel()
+        panel.nameFieldStringValue = suggestedName
+        panel.allowedContentTypes = []
+
+        if panel.runModal() == .OK, let url = panel.url {
+            do {
+                try Data(bytes).write(to: url)
+                message = "Exported: \(url.lastPathComponent) / \(bytes.count) bytes"
+            } catch {
+                message = "Export error: \(error.localizedDescription)"
+            }
+        }
     }
 
     func readName(from bytes: [UInt8], start: Int) -> String {

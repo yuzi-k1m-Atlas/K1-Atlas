@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B56D1DF92FFB158100CD0AF4 /* AtlasViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56D1DF82FFB156500CD0AF4 /* AtlasViewModel.swift */; };
+		B56D1E002FFC96C500CD0AF4 /* K1Voice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56D1DFF2FFC96C500CD0AF4 /* K1Voice.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		B56D1DC52FF86A9800CD0AF4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,9 +32,10 @@
 		B56D1DB32FF86A9700CD0AF4 /* K1 Atlas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "K1 Atlas.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56D1DC42FF86A9800CD0AF4 /* K1 AtlasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "K1 AtlasTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56D1DCE2FF86A9800CD0AF4 /* K1 AtlasUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "K1 AtlasUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B56D1DF52FF9C7AA00CD0AF4 /* K1Voice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K1Voice.swift; sourceTree = "<group>"; };
 		B56D1DF62FF9C85800CD0AF4 /* AtlasProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtlasProject.swift; sourceTree = "<group>"; };
 		B56D1DF72FF9C87D00CD0AF4 /* K1Slot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K1Slot.swift; sourceTree = "<group>"; };
+		B56D1DF82FFB156500CD0AF4 /* AtlasViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtlasViewModel.swift; sourceTree = "<group>"; };
+		B56D1DFF2FFC96C500CD0AF4 /* K1Voice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K1Voice.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -78,6 +84,7 @@
 		B56D1DAA2FF86A9700CD0AF4 = {
 			isa = PBXGroup;
 			children = (
+				B56D1DF82FFB156500CD0AF4 /* AtlasViewModel.swift */,
 				B56D1DF42FF977EE00CD0AF4 /* ViewModels */,
 				B56D1DF32FF977EB00CD0AF4 /* Views */,
 				B56D1DF22FF977E900CD0AF4 /* Parser */,
@@ -102,9 +109,9 @@
 		B56D1DF12FF977E600CD0AF4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B56D1DFF2FFC96C500CD0AF4 /* K1Voice.swift */,
 				B56D1DF72FF9C87D00CD0AF4 /* K1Slot.swift */,
 				B56D1DF62FF9C85800CD0AF4 /* AtlasProject.swift */,
-				B56D1DF52FF9C7AA00CD0AF4 /* K1Voice.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -274,6 +281,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B56D1DF92FFB158100CD0AF4 /* AtlasViewModel.swift in Sources */,
+				B56D1E002FFC96C500CD0AF4 /* K1Voice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
