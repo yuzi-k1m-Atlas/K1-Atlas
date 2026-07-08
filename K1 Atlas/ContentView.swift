@@ -9,9 +9,10 @@ struct ContentView: View {
     @State private var undoStack: [[K1Voice]] = []
     @State private var bankHeader: [UInt8] = [0xF0, 0x40, 0x00, 0x20, 0x00, 0x03, 0x00, 0x00]
     @State private var message = ""
-
+    @State private var selectedExportSlot = 0
+    @State private var swapSourceSlot: Int? = nil
     var body: some View {
-        VStack(spacing: 14) {
+        VStack(spacing: 10) {
             Text("K1 Atlas")
                 .font(.largeTitle)
                 .bold()
@@ -86,7 +87,10 @@ struct ContentView: View {
 
                     Text(voice.name)
                         .frame(width: 140, alignment: .leading)
-
+                    Button("+") {
+                        addToNextEmptyExportSlot(voice)
+                    }
+                    .buttonStyle(.borderless)
                     Text(voice.sourceFile)
                         .foregroundStyle(.secondary)
 
@@ -101,13 +105,61 @@ struct ContentView: View {
                             .font(.caption)
                             .foregroundStyle(.orange)
                     }
+                    
+                }
+                .onTapGesture(count: 2) {
+                    addToNextEmptyExportSlot(voice)
                 }
             }
+            
             .frame(minHeight: 380)
+            Divider()
 
-            Spacer()
-        }
-        .padding(30)
+            Text("Export Slots")
+                .font(.headline)
+
+            List(atlas.project.exportSlots.indices, id: \.self) { index in
+                HStack {
+                    Text(slotLabel(for: index))
+                        .frame(width: 60, alignment: .leading)
+
+                    if let voice = atlas.project.exportSlots[index] {
+                        HStack {
+                            Text(voice.name)
+
+                            Spacer()
+
+                            Button("✕") {
+                                atlas.project.exportSlots[index] = nil
+                            }
+                            .buttonStyle(.borderless)
+                        }
+                    } else {
+                        Text("Empty")
+                            .foregroundStyle(.secondary)
+                    }
+
+                    Spacer()
+
+                    Text("PC \(index + 1)")
+                        .foregroundStyle(.secondary)
+                }
+                .background(index == selectedExportSlot ? Color.orange.opacity(0.25) : Color.clear)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 4)
+                        .stroke(index == selectedExportSlot ? Color.orange : Color.clear, lineWidth: 1.5)
+                )
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    selectedExportSlot = index
+                }
+                }
+                .frame(minHeight: 220)
+
+                Spacer()
+                }
+                .padding(.horizontal, 30)
+        .padding(.vertical, 16)
         .frame(minWidth: 980, minHeight: 760)
     }
 
@@ -133,7 +185,20 @@ struct ContentView: View {
             loadFiles([url], sourceName: url.lastPathComponent)
         }
     }
-
+    func addToNextEmptyExportSlot(_ voice: K1Voice) {
+        atlas.project.exportSlots[selectedExportSlot] = voice
+        message = "Added \(voice.name) to \(slotLabel(for: selectedExportSlot))."
+    }
+    func swapExportSlot(with index: Int) {
+        if let source = swapSourceSlot {
+            atlas.project.exportSlots.swapAt(source, index)
+            message = "Swapped \(slotLabel(for: source)) and \(slotLabel(for: index))."
+            swapSourceSlot = nil
+        } else {
+            swapSourceSlot = index
+            message = "Swap source: \(slotLabel(for: index))."
+        }
+    }
     func openFolder() {
         let panel = NSOpenPanel()
         panel.allowsMultipleSelection = false
@@ -255,16 +320,16 @@ struct ContentView: View {
     }
 
     func exportBank() {
-        let exportVoices = Array(atlas.visibleVoices.prefix(32))
+        let filledSlots = atlas.project.exportSlots.compactMap { $0 }
 
-        guard exportVoices.count == 32 else {
-            message = "Export Bank needs 32 voices."
+        guard filledSlots.count == 32 else {
+            message = "Export needs exactly 32 filled slots. Current: \(filledSlots.count)"
             return
         }
 
         var exportBytes: [UInt8] = bankHeader
 
-        for voice in exportVoices {
+        for voice in filledSlots {
             exportBytes.append(contentsOf: voice.rawData)
         }
 
@@ -306,7 +371,12 @@ struct ContentView: View {
         return String(name).trimmingCharacters(in: .whitespaces)
     }
 }
-
+func slotLabel(for index: Int) -> String {
+    let banks = ["IA", "IB", "IC", "ID", "iA", "iB", "iC", "iD"]
+    let bank = banks[index / 8]
+    let number = (index % 8) + 1
+    return "\(bank)-\(number)"
+}
 #Preview {
     ContentView()
 }

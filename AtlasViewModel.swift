@@ -11,7 +11,7 @@ final class AtlasViewModel: ObservableObject {
     @Published var searchText = ""
     @Published var duplicateMode = false
     @Published var smartCleanMode = false
-    
+    @Published var project = AtlasProject()
     var duplicateGroups: [String: [K1Voice]] {
         Dictionary(grouping: voices, by: { $0.fingerprint })
             .filter { $0.value.count > 1 }

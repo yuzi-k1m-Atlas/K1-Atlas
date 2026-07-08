@@ -3,6 +3,7 @@ import Foundation
 struct AtlasProject {
     var library: [K1Voice] = []
     var singleSlots: [K1Slot] = AtlasProject.makeSingleSlots()
+    var exportSlots: [K1Voice?] = Array(repeating: nil, count: 64)
     var multiSlots: [K1Slot] = AtlasProject.makeMultiSlots()
 
     static func makeSingleSlots() -> [K1Slot] {
