@@ -32,7 +32,15 @@ struct ContentView: View {
                 Button("Delete Selected") {
                     deleteSelected()
                 }
+                Button("Add Selected") {
+                    addSelectedVoicesToExportSlots()
+                }
                 .disabled(selectedVoiceIDs.isEmpty)
+                Button("Add All") {
+                    addAllVisibleVoicesToExportSlots()
+                }
+                .disabled(atlas.visibleVoices.isEmpty)
+               
 
                 Button("Undo") {
                     undoDelete()
@@ -292,7 +300,53 @@ struct ContentView: View {
         atlas.voices = loadedVoices
         atlas.fileInfo = "\(bankCount) banks / \(singleCount) singles / \(unknownCount) unknown / \(atlas.voices.count) voices / \(atlas.uniqueCount) unique / \(atlas.duplicateCount) duplicates"
     }
+    func addSelectedVoicesToExportSlots() {
+        let selected = atlas.visibleVoices.filter {
+            selectedVoiceIDs.contains($0.id)
+        }
 
+        guard !selected.isEmpty else { return }
+
+        var slot = selectedExportSlot
+        var addedCount = 0
+
+        for voice in selected {
+            while slot < atlas.project.exportSlots.count &&
+                  atlas.project.exportSlots[slot] != nil {
+                slot += 1
+            }
+
+            guard slot < atlas.project.exportSlots.count else { break }
+
+            atlas.project.exportSlots[slot] = voice
+            slot += 1
+            addedCount += 1
+        }
+
+        message = "Added \(addedCount) selected voices."
+    }
+    func addAllVisibleVoicesToExportSlots() {
+        let voicesToAdd = atlas.visibleVoices
+
+        guard !voicesToAdd.isEmpty else {
+            message = "No visible voices to add."
+            return
+        }
+
+        var slot = selectedExportSlot
+        var addedCount = 0
+
+        for voice in voicesToAdd {
+            guard slot < atlas.project.exportSlots.count else { break }
+
+            atlas.project.exportSlots[slot] = voice
+            slot += 1
+            addedCount += 1
+        }
+
+        message = "Added \(addedCount) visible voices from \(slotLabel(for: selectedExportSlot))."
+    }
+      
     func deleteSelected() {
         let selected = atlas.voices.filter { selectedVoiceIDs.contains($0.id) }
 
