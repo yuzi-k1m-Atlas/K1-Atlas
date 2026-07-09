@@ -1,16 +1,10 @@
-Modern Patch Librarian for Kawai K1 / K1m **Free • Open Source • macOS**
+# 🎹 K1 Atlas
+
+Modern Patch Librarian for Kawai K1 / K1m
 
 **Free • Open Source • macOS**
 
 <img src="images/screenshot.png" width="900">
-
-# K1 Atlas
-
-Modern Patch Librarian for Kawai K1 / K1m
-
-# K1 Atlas
-
-Modern Patch Librarian for Kawai K1 / K1m
 
 K1 Atlas is a modern patch librarian for the Kawai K1 synthesizer family.
 
@@ -27,8 +21,9 @@ It allows you to browse, search, organize and export SysEx patch banks with a mo
 - Smart Clean
 - Add Selected
 - Add All
-- Double-click to add
-- Drag & Drop patch organization
+- Double-click to add patches
+- Drag & Drop Export Slots
+- Reorder Export Slots
 - Export custom 32-patch banks
 
 ---
@@ -42,9 +37,13 @@ It allows you to browse, search, organize and export SysEx patch banks with a mo
 
 ## Download
 
-Download the latest version here:
+👉 **[Download the latest release](https://github.com/yuzi-k1m-Atlas/K1-Atlas/releases/latest)**
 
-[Download the latest release](https://github.com/yuzi-k1m-Atlas/K1-Atlas/releases/latest)
+---
+
+## Screenshots
+
+The latest interface is shown above.
 
 ---
 
