@@ -94,6 +94,7 @@ struct ContentView: View {
                         .frame(width: 32, alignment: .leading)
 
                     Text(voice.name)
+
                         .frame(width: 140, alignment: .leading)
                     Button("+") {
                         addToNextEmptyExportSlot(voice)
@@ -115,11 +116,18 @@ struct ContentView: View {
                     }
                     
                 }
+                
+                .onDrag {
+                    NSItemProvider(object: voice.id.uuidString as NSString)
+                } preview: {
+                    Text(voice.name)
+                        .padding(6)
+                }
                 .onTapGesture(count: 2) {
                     addToNextEmptyExportSlot(voice)
                 }
             }
-            
+          
             .frame(minHeight: 380)
             Divider()
 
@@ -354,17 +362,26 @@ struct ContentView: View {
             guard let provider = providers.first else { return false }
 
             provider.loadObject(ofClass: NSString.self) { object, _ in
-                guard
-                    let nsString = object as? NSString,
-                    let sourceIndex = Int(nsString as String)
-                else { return }
+                guard let nsString = object as? NSString else { return }
+
+                let value = nsString as String
 
                 DispatchQueue.main.async {
-                    guard sourceIndex != targetIndex else { return }
+                    if let sourceIndex = Int(value) {
+                        guard sourceIndex != targetIndex else { return }
 
-                    atlas.project.exportSlots.swapAt(sourceIndex, targetIndex)
-                    selectedExportSlot = targetIndex
-                    message = "Moved \(slotLabel(for: sourceIndex)) to \(slotLabel(for: targetIndex))."
+                        atlas.project.exportSlots.swapAt(sourceIndex, targetIndex)
+                        selectedExportSlot = targetIndex
+                        message = "Moved \(slotLabel(for: sourceIndex)) to \(slotLabel(for: targetIndex))."
+                        return
+                    }
+
+                    if let voiceID = UUID(uuidString: value),
+                       let voice = atlas.visibleVoices.first(where: { $0.id == voiceID }) {
+                        atlas.project.exportSlots[targetIndex] = voice
+                        selectedExportSlot = targetIndex
+                        message = "Added \(voice.name) to \(slotLabel(for: targetIndex))."
+                    }
                 }
             }
 
