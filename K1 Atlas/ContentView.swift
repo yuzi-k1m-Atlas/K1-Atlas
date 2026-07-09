@@ -134,7 +134,9 @@ struct ContentView: View {
                     if let voice = atlas.project.exportSlots[index] {
                         HStack {
                             Text(voice.name)
-
+                                .onDrag {
+                                    NSItemProvider(object: "\(index)" as NSString)
+                                }
                             Spacer()
 
                             Button("✕") {
@@ -161,9 +163,11 @@ struct ContentView: View {
                 .onTapGesture {
                     selectedExportSlot = index
                 }
+                .onDrop(of: [.text], isTargeted: nil) { providers in
+                    handleExportSlotDrop(providers: providers, targetIndex: index)
                 }
+            }
                 .frame(minHeight: 220)
-
                 Spacer()
                 }
                 .padding(.horizontal, 30)
@@ -346,7 +350,26 @@ struct ContentView: View {
 
         message = "Added \(addedCount) visible voices from \(slotLabel(for: selectedExportSlot))."
     }
-      
+        func handleExportSlotDrop(providers: [NSItemProvider], targetIndex: Int) -> Bool {
+            guard let provider = providers.first else { return false }
+
+            provider.loadObject(ofClass: NSString.self) { object, _ in
+                guard
+                    let nsString = object as? NSString,
+                    let sourceIndex = Int(nsString as String)
+                else { return }
+
+                DispatchQueue.main.async {
+                    guard sourceIndex != targetIndex else { return }
+
+                    atlas.project.exportSlots.swapAt(sourceIndex, targetIndex)
+                    selectedExportSlot = targetIndex
+                    message = "Moved \(slotLabel(for: sourceIndex)) to \(slotLabel(for: targetIndex))."
+                }
+            }
+
+            return true
+        }
     func deleteSelected() {
         let selected = atlas.voices.filter { selectedVoiceIDs.contains($0.id) }
 
