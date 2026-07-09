@@ -1,8 +1,8 @@
-# 🎹 K1 Atlas
+🎹 K1 Atlas
 
 Modern Patch Librarian for Kawai K1 / K1m
 
-**Free • Open Source • macOS**
+Free • Open Source • macOS
 
 <img src="images/screenshot.png" width="900">
 
