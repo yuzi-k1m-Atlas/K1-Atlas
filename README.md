@@ -1,3 +1,5 @@
+<img width="1528" height="1371" alt="スクリーンショット 2026-07-09 15 07 52" src="https://github.com/user-attachments/assets/3997fb7a-0f9e-45f3-b911-5d25857ed85b" />
+
 # K1 Atlas
 
 Modern Patch Librarian for Kawai K1 / K1m
