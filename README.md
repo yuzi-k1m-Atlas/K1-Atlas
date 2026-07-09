@@ -1,4 +1,12 @@
-<img width="1528" height="1371" alt="スクリーンショット 2026-07-09 15 07 52" src="https://github.com/user-attachments/assets/3997fb7a-0f9e-45f3-b911-5d25857ed85b" />
+Modern Patch Librarian for Kawai K1 / K1m **Free • Open Source • macOS**
+
+**Free • Open Source • macOS**
+
+<img src="images/screenshot.png" width="900">
+
+# K1 Atlas
+
+Modern Patch Librarian for Kawai K1 / K1m
 
 # K1 Atlas
 
@@ -36,7 +44,7 @@ It allows you to browse, search, organize and export SysEx patch banks with a mo
 
 Download the latest version here:
 
-**https://github.com/yuzi-k1m-Atlas/K1-Atlas/releases/latest**
+[Download the latest release](https://github.com/yuzi-k1m-Atlas/K1-Atlas/releases/latest)
 
 ---
 
